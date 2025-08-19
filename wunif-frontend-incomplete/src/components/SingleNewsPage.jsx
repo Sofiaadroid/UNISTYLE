@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom'; // Asumo que usas react-router-dom para obtener el ID de la noticia
 import DOMPurify from 'dompurify'; // Para sanitizar el HTML del contenido de noticias
+import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'; // Asumo que usas react-router-dom para obtener el ID de la noticia
 
 // Asume que tienes un archivo CSS general como App.css o SingleNewsPage.css
 // import '../App.css'; 
@@ -16,7 +16,7 @@ const SingleNewsPage = () => {
     const [newCommentContent, setNewCommentContent] = useState('');
     const [commentActionMessage, setCommentActionMessage] = useState('');
 
-    const API_BASE_URL = 'http://localhost:3003/api'; // Asegúrate de que esta URL sea correcta
+    const API_BASE_URL = '/api'; // Proxy de Vite
 
     const loggedInUserRole = localStorage.getItem('userRole');
     const loggedInUsername = localStorage.getItem('username');

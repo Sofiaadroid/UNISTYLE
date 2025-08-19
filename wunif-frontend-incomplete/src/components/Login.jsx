@@ -8,7 +8,7 @@ const Login = ({ onLogin }) => {
     const [message, setMessage] = useState('');
     const [isRegistering, setIsRegistering] = useState(false);
 
-    const API_BASE_URL = 'http://localhost:3003/api';
+    const API_BASE_URL = '/api';
 
     const handleAuth = async (e) => {
         e.preventDefault();
@@ -33,7 +33,7 @@ const Login = ({ onLogin }) => {
                 setMessage(data.message);
                 // Llama a la prop 'onLogin' y pasa todos los datos necesarios
                 // App.jsx (handleLogin) será quien actualice los estados de isLoggedIn, userRole, etc.
-                onLogin(data.token, data.role, username); // Pasa el token, el rol y el username
+                onLogin(data.token, (data.role ?? data.user?.role), username); // Pasa el token, el rol y el username
 
                 setUsername('');
                 setPassword('');

@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 // Importación de componentes externos (NOMBRES CORREGIDOS)
-import Navbar from './components/Navbar';
-import Herosection from './components/Herosection'; // Corregido: Herosection
 import Aboutsection from './components/Aboutsection'; // Corregido: Aboutsection
-import Whatwedo from './components/Whatwedo'; // Corregido: Whatwedo
-import Howwedoit from './components/Howwedoit'; // Corregido: Howwedoit
+import AdminPanel from './components/AdminPanel';
 import ContactForm from './components/ContactForm'; // Corregido: ContactForm
 import Footer from './components/Footer';
+import Herosection from './components/Herosection'; // Corregido: Herosection
+import Howwedoit from './components/Howwedoit'; // Corregido: Howwedoit
 import Login from './components/Login';
-import AdminPanel from './components/AdminPanel';
+import Navbar from './components/Navbar';
 import NewsPage from './components/NewsPage';
 import SingleNewsPage from './components/SingleNewsPage';
 import UserPanel from './components/UserPanel';
+import Whatwedo from './components/Whatwedo'; // Corregido: Whatwedo
 
 import './App.css';
 
@@ -104,7 +104,7 @@ function App() {
         e.preventDefault();
         setSubmissionStatus('Enviando...');
         try {
-            const response = await fetch('http://localhost:3003/api/contact', {
+            const response = await fetch('/api/contactmessages', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),

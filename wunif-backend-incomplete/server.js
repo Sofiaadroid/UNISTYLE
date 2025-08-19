@@ -96,8 +96,8 @@ app.get('/api/admin/users', [auth, authorizeAdmin], async (req, res) => {
     }
 });
 
-// Ruta para otorgar el rol de administrador a un usuario (requiere autenticación y rol de super-administrador)
-app.post('/api/admin/grant-admin', [auth, authorizeSuperAdmin], async (req, res) => {
+// Ruta para otorgar el rol de administrador a un usuario (requiere autenticación y rol de admin o super-admin)
+app.post('/api/admin/grant-admin', [auth, authorizeAdmin], async (req, res) => {
     const { usernameToUpdate } = req.body;
     if (!usernameToUpdate) {
         return res.status(400).json({ message: 'Se requiere el nombre de usuario para actualizar.' });
@@ -126,8 +126,8 @@ app.post('/api/admin/grant-admin', [auth, authorizeSuperAdmin], async (req, res)
     }
 });
 
-// Ruta para revocar el rol de administrador a un usuario (requiere autenticación y rol de super-administrador)
-app.put('/api/admin/revoke-admin', [auth, authorizeSuperAdmin], async (req, res) => {
+// Ruta para revocar el rol de administrador a un usuario (requiere autenticación y rol de admin o super-admin)
+app.put('/api/admin/revoke-admin', [auth, authorizeAdmin], async (req, res) => {
     const { usernameToUpdate } = req.body;
     if (!usernameToUpdate) {
         return res.status(400).json({ message: 'Se requiere el nombre de usuario para actualizar.' });
@@ -156,8 +156,8 @@ app.put('/api/admin/revoke-admin', [auth, authorizeSuperAdmin], async (req, res)
 });
 
 
-// Ruta para eliminar un usuario (requiere autenticación y rol de super-administrador)
-app.delete('/api/admin/users/:id', [auth, authorizeSuperAdmin], async (req, res) => {
+// Ruta para eliminar un usuario (requiere autenticación y rol de admin o super-admin)
+app.delete('/api/admin/users/:id', [auth, authorizeAdmin], async (req, res) => {
     try {
         const userIdToDelete = req.params.id;
         const user = await User.findById(userIdToDelete);

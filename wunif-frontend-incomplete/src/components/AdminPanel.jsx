@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import AdminComplaintSuggestions from './AdminComplaintSuggestions'; // Importa el componente de Quejas/Sugerencias
 import DOMPurify from 'dompurify'; // Para sanitizar el HTML del contenido de noticias
+import React, { useCallback, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill'; // Importa ReactQuill
 import 'react-quill/dist/quill.snow.css'; // Importa los estilos de Quill
 
@@ -44,7 +43,7 @@ const AdminPanel = ({ userRole, username }) => {
     const [complaintActionMessage, setComplaintActionMessage] = useState('');
 
 
-    const API_BASE_URL = 'http://localhost:3003/api';
+    const API_BASE_URL = '/api';
 
     // Obtener el rol y nombre de usuario del usuario logueado para la lógica de restricción
     const loggedInUserRole = localStorage.getItem('userRole');

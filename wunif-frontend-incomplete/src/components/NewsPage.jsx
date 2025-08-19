@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
 import DOMPurify from 'dompurify'; // Importa DOMPurify para sanitizar HTML
+import React, { useCallback, useEffect, useState } from 'react';
 
 const NewsPage = ({ onSelectNewsPost }) => {
     const [newsPosts, setNewsPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    const API_BASE_URL = 'http://localhost:3003/api';
+    const API_BASE_URL = '/api';
 
     const fetchNewsPosts = useCallback(async () => {
         setLoading(true);
