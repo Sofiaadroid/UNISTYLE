@@ -1,0 +1,1885 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/* Nuevas fuentes importadas para selección */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f9fafb; /* bg-gray-50 */
+    color: #1a202c; /* text-gray-900 */
+}
+
+/* Base styles for containers */
+.container {
+    max-width: 1280px; /* Equivalent to max-w-7xl in Tailwind, using a fixed pixel for simplicity but can be adjusted for fluidness */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.App {
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98); /* bg-white bg-opacity-95 más opaco */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* shadow-md más pronunciado */
+    z-index: 50;
+    padding: 1rem; /* p-4 */
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.navbar-brand {
+    font-size: 1.8rem; /* text-2xl más grande */
+    font-weight: 800; /* font-bold más fuerte */
+    color: #3730a3; /* text-indigo-700 más oscuro */
+    letter-spacing: -0.025em; /* Ajuste de espaciado */
+}
+
+.navbar-nav {
+    display: flex;
+    gap: 1.8rem; /* space-x-6 más espaciado */
+}
+
+.nav-button {
+    color: #4a5568; /* text-gray-700 */
+    font-weight: 500; /* font-medium */
+    transition: color 300ms ease, transform 300ms ease; /* Añadir transform para hover */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0;
+    position: relative; /* Para el efecto de subrayado */
+}
+
+.nav-button:hover {
+    color: #4338ca; /* hover:text-indigo-700 */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+.nav-button::after { /* Efecto de subrayado */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #4338ca;
+    transition: width 0.3s ease-in-out;
+}
+
+.nav-button:hover::after {
+    width: 100%;
+}
+
+
+.nav-button-highlight {
+    background-color: #4338ca;
+    color: #fff;
+    padding: 0.6rem 1.2rem; /* Más padding */
+    border-radius: 0.75rem; /* Más redondeado */
+    transition: background-color 300ms ease, transform 300ms ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+}
+
+.nav-button-highlight:hover {
+    background-color: #3730a3;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to right, #4f46e5, #9333ea); /* from-indigo-600 to-purple-700 */
+    color: #fff;
+    overflow: hidden;
+    padding: 1rem; /* p-4 */
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    background-image: url('https://placehold.co/1920x1080/4F46E5/FFFFFF?text=Unistyle+Pro+Web+Development');
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem; /* p-6 */
+    background-color: rgba(255, 255, 255, 0.1); /* bg-white bg-opacity-10 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+    backdrop-filter: blur(5px); /* backdrop-blur-sm */
+}
+
+.hero-title {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    margin-bottom: 1rem; /* mb-4 */
+    animation: fadeInDown 1s ease-out forwards;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 2rem; /* mb-8 */
+    animation: fadeInUp 1s ease-out forwards 0.3s;
+}
+
+.hero-button {
+    background-color: #fff;
+    color: #4338ca; /* text-indigo-700 */
+    font-weight: 700; /* font-bold */
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: all 300ms ease; /* transition-all duration-300 */
+    border: none;
+    cursor: pointer;
+}
+
+.hero-button:hover {
+    background-color: #e0e7ff; /* hover:bg-indigo-100 */
+    transform: scale(1.05); /* hover:scale-105 */
+}
+
+/* About Us Section */
+.about-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+    background-color: #fff;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.about-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    color: #4338ca; /* text-indigo-700 */
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-align: center;
+}
+
+.about-text {
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.625; /* leading-relaxed */
+    margin-bottom: 1.5rem; /* mb-6 */
+    text-align: center;
+    max-width: 64rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.about-text .highlight {
+    font-weight: 600; /* font-semibold */
+    color: #4f46e5; /* text-indigo-600 */
+}
+
+.about-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* space-x-6 */
+    margin-top: 2.5rem; /* mt-10 */
+}
+
+.icon-card {
+    padding: 1rem; /* p-4 */
+    background-color: #eef2ff; /* bg-indigo-50 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    transition: box-shadow 300ms ease; /* transition-shadow duration-300 */
+    text-align: center;
+}
+
+.icon-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* hover:shadow-lg */
+}
+
+.icon-card span {
+    font-size: 3rem; /* text-5xl */
+    color: #4f46e5; /* text-indigo-600 */
+}
+
+.icon-card p {
+    margin-top: 0.5rem; /* mt-2 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+}
+
+/* What We Do Section */
+.what-we-do-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+    background-color: #f3f4f6; /* bg-gray-100 */
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.what-we-do-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    color: #4338ca; /* text-indigo-700 */
+    text-align: center;
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.what-we-do-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* grid-cols-1 */
+    gap: 2.5rem; /* gap-10 */
+    max-width: 768px; /* max-w-5xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) { /* md:grid-cols-2 */
+    .what-we-do-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.what-we-do-card {
+    background-color: #fff;
+    padding: 2rem; /* p-8 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+    transform: scale(1);
+    transition: transform 300ms ease; /* transition-transform duration-300 */
+}
+
+.what-we-do-card:hover {
+    transform: scale(1.02); /* hover:scale-[1.02] */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem; /* mb-4 */
+}
+
+.card-icon {
+    color: #4f46e5; /* text-indigo-600 */
+    font-size: 2.25rem; /* text-4xl */
+    margin-right: 1rem; /* mr-4 */
+}
+
+.card-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: #2d3748; /* text-gray-800 */
+}
+
+.card-description {
+    font-size: 1.125rem; /* text-lg */
+    color: #4a5568; /* text-gray-700 */
+    line-height: 1.625; /* leading-relaxed */
+}
+
+.card-list {
+    list-style: disc;
+    list-style-position: inside;
+    color: #4a5568; /* text-gray-600 */
+    margin-top: 1rem; /* mt-4 */
+    padding-left: 0;
+}
+
+.card-list li {
+    margin-bottom: 0.5rem; /* space-y-2 (applied to list items) */
+}
+
+/* How We Do It Section */
+.how-we-do-it-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+    background-color: #fff;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.how-we-do-it-title {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    color: #4338ca; /* text-indigo-700 */
+    text-align: center;
+    margin-bottom: 3rem; /* mb-12 */
+}
+
+.how-we-do-it-grid {
+    display: grid;
+    grid-template-columns: 2fr; /* grid-cols-1 */
+    gap: 3.2rem; /* Aumentado el espacio entre las tarjetas (antes 2rem) */
+    max-width: 10000000000000px; /* Aumentado el ancho máximo de la rejilla (antes 768px) */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) { /* md:grid-cols-3 */
+    .how-we-do-it-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.step-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9fafb; /* bg-gray-50 */
+    padding: 2.9rem; /* Aumentado el padding interno de las tarjetas (antes 2rem) */
+    border-radius: 5rem; /* rounded-2xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transform: translateY(0);
+    transition: all 300ms ease; /* transform hover:translate-y-[-5px] transition-all duration-300 */
+}
+
+.step-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+    transform: translateY(-5px);
+}
+
+.step-icon-wrapper {
+    background-color: #e0e7ff; /* bg-indigo-100 */
+    padding: 1.25rem; /* p-5 */
+    border-radius: 9999px; /* rounded-full */
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.step-icon {
+    color: #4338ca; /* text-indigo-700 */
+    font-size: 3rem; /* text-5xl */
+}
+
+.step-title {
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600; /* font-semibold */
+    color: #2d3748; /* text-gray-800 */
+    margin-bottom: 0.75rem; /* mb-3 */
+}
+
+.step-description {
+    font-size: 1.125rem; /* text-lg */
+    color: #4a5568; /* text-gray-700 */
+}
+
+/* Contact Section */
+.contact-section {
+    padding-top: 5rem; /* py-20 */
+    padding-bottom: 5rem; /* py-20 */
+    background: linear-gradient(to right, #9333ea, #4f46e5); /* from-purple-700 to-indigo-600 */
+    color: #fff;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.contact-title {
+    font-size: 2.8rem; /* text-4xl */
+    font-weight: 700; /* font-bold */
+    margin-bottom: 2.5rem; /* mb-10 */
+    text-align: center;
+}
+
+.contact-subtitle {
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 2rem; /* mb-8 */
+    line-height: 1.625; /* leading-relaxed */
+    text-align: center;
+    max-width: 48rem; /* max-w-3xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-form {
+    background-color: #fff;
+    padding: 2rem; /* p-8 */
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* shadow-2xl */
+    max-width: 40rem; /* max-w-lg */
+    margin-left: auto;
+    margin-right: auto;
+    color: #1a202c; /* text-gray-900 */
+}
+
+.form-group {
+    margin-bottom: 2rem; /* mb-6 */
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    color: #03070e; /* text-gray-700 */
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 500; /* font-medium */
+    margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.form-input,
+.form-textarea,
+.form-select { /* Añadido .form-select para el selector de fuente */
+    width: 100%;
+    padding: 0.75rem 0.10rem; /* px-5 py-3 */
+    border: 1px solid #d1d5db; /* border border-gray-300 */
+    border-radius: 0.75rem; /* rounded-xl */
+    outline: none;
+    transition: all 200ms ease; /* transition-all duration-200 */
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus { /* Añadido .form-select para el selector de fuente */
+    border-color: #4f46e5; /* focus:ring-indigo-500 */
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* focus:ring-2 focus:ring-indigo-500 */
+}
+
+.form-textarea {
+    min-height: 150px; /* Equivalent to rows-6 */
+    resize: vertical;
+}
+
+.submit-button {
+    width: 100%;
+    background-color: #4338ca; /* bg-indigo-700 */
+    color: #fff;
+    font-weight: 700; /* font-bold */
+    padding: 0.75rem 1.5rem; /* py-3 px-6 */
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    transition: all 300ms ease; /* transform hover:scale-[1.01] transition-all duration-300 */
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.submit-button:hover {
+    background-color: #3730a3; /* hover:bg-indigo-800 */
+    transform: scale(1.01);
+}
+
+.submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.submission-status {
+    margin-top: 1rem; /* mt-4 */
+    text-align: center;
+    font-weight: 600; /* font-semibold */
+}
+
+.submission-status.success {
+    color: #10b981; /* text-green-600 */
+}
+
+.submission-status.error {
+    color: #ef4444; /* text-red-500 */
+}
+
+/* Footer */
+.footer {
+    background-color: #2d3748; /* bg-gray-800 */
+    color: #fff;
+    padding-top: 2rem; /* py-8 */
+    padding-bottom: 2rem; /* py-8 */
+    text-align: center;
+    padding-left: 1rem; /* px-4 */
+    padding-right: 1rem; /* px-4 */
+}
+
+.footer-text {
+    margin-top: 0.5rem; /* mt-2 */
+    font-size: 0.875rem; /* text-sm */
+}
+
+.footer-links {
+    margin-top: 1rem; /* mt-4 */
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* space-x-6 */
+}
+
+.footer-link {
+    color: #a0aec0; /* text-gray-400 */
+    transition: color 300ms ease; /* transition-colors duration-300 */
+}
+
+.footer-link:hover {
+    color: #fff; /* hover:text-white */
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 4rem; /* md:text-6xl */
+    }
+    .hero-subtitle {
+        font-size: 1.5rem; /* md:text-2xl */
+    }
+}
+
+/* --- Estilos para Login y Admin Panel --- */
+.login-section, .admin-panel-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinea al inicio para que el contenido no se centre verticalmente si es corto */
+    min-height: 100vh; /* Ajustar para ocupar la altura de la vista */
+    padding-top: 6rem; /* Para que no se esconda bajo la navbar fija */
+    background-color: #f3f4f6; /* bg-gray-100 */
+    box-sizing: border-box; /* Asegura que el padding no aumente el tamaño total */
+}
+
+.login-container, .admin-panel-container {
+    background-color: #fff;
+    padding: 2.5rem; /* p-10 */
+    border-radius: 1rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    width: 100%;
+    max-width: 28rem; /* max-w-md */
+    text-align: center;
+    margin-top: 2rem; /* Añadir un poco de margen superior para separar de la navbar */
+    margin-bottom: 2rem; /* Añadir margen inferior */
+}
+
+.login-title, .admin-panel-title {
+    font-size: 2.25rem; /* text-3xl */
+    font-weight: 700; /* font-bold */
+    color: #4338ca; /* text-indigo-700 */
+    margin-bottom: 2rem; /* mb-8 */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem; /* space-y-5 */
+}
+
+.login-form .form-group {
+    text-align: left; /* Alinea etiquetas a la izquierda */
+}
+
+.login-submit-button, .admin-logout-button {
+    background-color: #4f46e5; /* bg-indigo-600 */
+    color: #fff;
+    font-weight: 600; /* font-semibold */
+    padding: 0.75rem 0.3rem; /* py-3 px-6 */
+    border-radius: 0.7rem; /* rounded-md */
+    transition: background-color 300ms ease;
+    border: none;
+    cursor: pointer;
+}
+
+.login-submit-button:hover, .admin-logout-button:hover {
+    background-color: #4330b6; /* hover:bg-indigo-700 */
+}
+
+.login-error-message, .error-message {
+    color: #dc2626; /* text-red-600 */
+    margin-top: 0.5rem; /* mt-2 */
+    font-size: 0.875rem; /* text-sm */
+    text-align: center;
+}
+
+/* Admin Panel Specific Styles (re-organizado y mejorado) */
+.admin-panel-container {
+    max-width: 96rem; /* Ajustado para ser más amplio */
+    padding: 2rem;
+}
+
+.admin-panel-title {
+    font-size: 2.25rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1f2937;
+}
+
+.admin-section {
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    margin-bottom: 2.5rem;
+}
+
+.grant-admin-section {
+    background-color: #eff6ff; /* bg-blue-50 */
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1e40af; /* text-blue-800 */
+}
+
+.messages-section .section-title,
+.create-news-section .section-title,
+.manage-news-section .section-title {
+    color: #1f2937;
+}
+
+.section-description {
+    color: #374151;
+    margin-bottom: 1rem;
+}
+
+/* Mensajes de feedback (éxito, error, carga) */
+.success-message {
+    color: #16a34a;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.loading-message, .no-messages-message {
+    color: #4b5563;
+    text-align: center;
+    padding: 1rem;
+    font-style: italic; /* Añadido para consistencia */
+}
+
+/* Estilos para listas (usuarios, mensajes, noticias) */
+.users-list,
+.messages-list,
+.news-posts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.user-card,
+.message-card,
+.news-post-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+}
+
+/* Estilos específicos para user-card */
+.user-card {
+    justify-content: space-between; /* Para separar info y botones */
+}
+
+.user-info {
+    flex-grow: 1;
+    margin-bottom: 0.5rem; /* Espacio entre info y botones */
+}
+
+.user-username {
+    font-weight: 600;
+    color: #1f2937;
+    word-break: break-word;
+}
+
+.user-role {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.user-role-admin {
+    color: #9333ea;
+    font-weight: 500;
+}
+
+.user-actions {
+    display: flex;
+    flex-direction: column; /* Botones apilados */
+    gap: 0.5rem; /* Espacio entre botones */
+    margin-top: 0.75rem;
+}
+
+/* Estilos para los botones de acción */
+.admin-action-button {
+    font-weight: bold;
+    padding: 0.5rem 0.75rem; /* Ajustado padding para ser más consistente */
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+    cursor: pointer;
+    border: none;
+}
+
+.admin-action-button:hover {
+    transform: scale(1.02); /* Ligeramente más pequeño el hover */
+}
+
+.grant-button {
+    background-color: #2563eb; /* Azul */
+    color: #ffffff;
+}
+
+.grant-button:hover {
+    background-color: #1d4ed8;
+}
+
+.delete-button {
+    background-color: #ef4444; /* Rojo */
+    color: #ffffff;
+}
+
+.delete-button:hover {
+    background-color: #dc2626;
+}
+
+.create-button {
+    background-color: #10b981; /* Verde */
+    color: #ffffff;
+}
+
+.create-button:hover {
+    background-color: #059669;
+}
+
+.edit-button {
+    background-color: #f59e0b; /* Naranja */
+    color: #ffffff;
+}
+
+.edit-button:hover {
+    background-color: #d97706;
+}
+
+.disabled-button {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Estilos para los mensajes de contacto */
+.message-card {
+    position: relative;
+}
+
+.message-card::before {
+    content: '✉️';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+.message-from, .message-email {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.message-from span, .message-email span {
+    font-weight: normal;
+}
+
+.message-email {
+    color: #4b5563;
+}
+
+.message-body-label {
+    color: #4b5563;
+    margin-top: 0.5rem;
+}
+
+.message-content {
+    background-color: #edf2f7;
+    border-left: 4px solid #6366f1;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.75rem;
+    font-style: italic;
+    color: #2d3748;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.message-timestamp {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+.message-actions {
+    margin-top: 1rem;
+    text-align: right; /* Alinea el botón de eliminar mensaje a la derecha */
+}
+
+/* Estilos para Publicaciones de Noticias (Admin Panel) */
+.news-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+}
+
+.news-post-form .form-group {
+    margin-bottom: 0;
+}
+
+/* Estilos para el editor Quill en el AdminPanel */
+.quill-editor-custom .ql-toolbar {
+    border-top-left-radius: 0.75rem; /* rounded-xl */
+    border-top-right-radius: 0.75rem; /* rounded-xl */
+    border-color: #d1d5db; /* border-gray-300 */
+    background-color: #f9fafb; /* Ligeramente más claro */
+}
+
+.quill-editor-custom .ql-container {
+    border-bottom-left-radius: 0.75rem; /* rounded-xl */
+    border-bottom-right-radius: 0.75rem; /* rounded-xl */
+    border-color: #d1d5db; /* border-gray-300 */
+    min-height: 200px; /* Ajusta la altura mínima del editor */
+}
+
+.news-post-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+}
+
+.news-post-author,
+.news-post-date {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 0.25rem;
+}
+
+.news-post-content-preview {
+    font-size: 0.95rem;
+    color: #374151;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+    /* Estilos para el contenido HTML previsualizado */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Evita saltos de línea para la previsualización */
+    max-height: 1.5em; /* Limita a una línea */
+}
+/* Asegurarse de que los elementos HTML dentro de la previsualización no rompan el layout */
+.news-post-content-preview h1, .news-post-content-preview h2, .news-post-content-preview h3,
+.news-post-content-preview p, .news-post-content-preview ul, .news-post-content-preview ol {
+    display: inline; /* Hace que los bloques se comporten como texto en línea */
+    margin: 0;
+    padding: 0;
+}
+
+
+.news-post-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* Estilos para el input de archivo y previsualización */
+.or-separator {
+    text-align: center;
+    margin: 1rem 0;
+    font-weight: 600;
+    color: #6b7280;
+}
+
+.image-preview-wrapper {
+    margin-top: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    background-color: #eef2f9;
+}
+
+.image-preview {
+    max-width: 100%;
+    max-height: 200px; /* Altura máxima para la previsualización */
+    object-fit: contain;
+    display: block;
+}
+
+
+/* --- Estilos para la Página de Noticias (NewsPage.jsx) --- */
+.news-page-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 6rem; /* Para no esconderse bajo la navbar */
+    background-color: #eef2f9; /* Un tono de azul muy claro */
+    box-sizing: border-box;
+}
+
+.news-page-container {
+    background-color: #ffffff;
+    padding: 2.5rem; /* Más padding */
+    border-radius: 1rem; /* Más redondeado */
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada */
+    max-width: 75rem; /* ANCHO AJUSTADO: Antes 70rem, ahora 75rem para más espacio */
+    width: 100%;
+    margin-top: 3rem; /* Más margen superior */
+    margin-bottom: 3rem;
+    border: 1px solid #e0e7ff; /* Borde sutil */
+}
+
+.news-page-title {
+    font-family: 'Playfair Display', serif; /* Mantengo Playfair Display como ejemplo, pero ahora es seleccionable */
+    font-size: 3rem; /* Más grande */
+    font-weight: 700; /* Negrita */
+    text-align: center;
+    margin-bottom: 2.5rem; /* Más espacio */
+    color: #1a202c; /* Color oscuro para contraste */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra de texto sutil */
+}
+
+.news-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Ajuste de min-width para cards y más espacio */
+    gap: 2.5rem; /* Más espacio entre cards */
+}
+
+.news-post-card-public {
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border: 1px solid #d1d5db; /* Borde más definido */
+    border-radius: 1rem; /* Más redondeado */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Sombra más suave */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Animación al pasar el ratón */
+    overflow: hidden; /* Para asegurar que el contenido no se desborde con bordes redondeados */
+}
+
+.news-post-card-public:hover {
+    transform: translateY(-8px); /* Efecto de elevación más pronunciado */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.news-image-wrapper {
+    width: 100%;
+    height: 220px; /* Altura fija para las imágenes, ligeramente más grande */
+    overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen para cubrir el área sin distorsionar */
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+.news-post-card-public:hover .news-image {
+    transform: scale(1.05); /* Zoom sutil en la imagen al pasar el ratón */
+}
+
+.news-content-wrapper {
+    padding: 1.5rem; /* Padding para el contenido de la tarjeta */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que el contenido ocupe el espacio restante */
+}
+
+.news-post-public-title {
+    /* La fuente se aplicará con estilo inline desde el JS */
+    font-size: 1.8rem; /* Más grande */
+    font-weight: 700; /* Negrita */
+    color: #2a3d66; /* Un azul oscuro para los títulos */
+    margin-bottom: 0.75rem;
+    line-height: 1.3; /* Mejorar legibilidad */
+}
+
+.news-post-public-meta {
+    font-size: 0.95rem; /* Ligeramente más grande */
+    color: #6b7280; /* text-gray-500 */
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb; /* Separador sutil */
+    padding-bottom: 0.75rem;
+    display: flex; /* Para alinear autor y fecha */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.news-post-public-author {
+    font-weight: 600; /* Más negrita */
+    color: #4b5563; /* text-gray-600 */
+}
+
+.news-post-public-date {
+    font-style: normal; /* Quitar cursiva para ser más legible */
+    font-size: 0.85rem; /* Ligeramente más pequeño */
+    color: #9ca3af; /* Un gris más claro */
+}
+
+.news-post-public-content {
+    font-size: 1rem;
+    color: #374151; /* text-gray-700 */
+    line-height: 1.7; /* Mejorar legibilidad */
+    flex-grow: 1; /* Para que el contenido ocupe el espacio y los cards tengan altura similar */
+    margin-top: 1rem; /* Más espacio superior */
+    /* Limitar la altura para la previsualización */
+    max-height: 100px; /* Altura máxima para el contenido, ajustada para que el botón "Leer más" no quede muy abajo */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Para manejar el "fade out" del texto */
+    position: relative;
+    padding-bottom: 1.5em; /* Espacio para el gradiente */
+}
+
+.news-post-public-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.5em; /* Altura del gradiente */
+    background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+    pointer-events: none; /* Permite hacer clic en el contenido debajo del gradiente */
+}
+
+/* Estilos para el contenido HTML renderizado dentro de .news-post-public-content */
+.news-post-public-content h1,
+.news-post-public-content h2,
+.news-post-public-content h3 {
+    font-family: 'Playfair Display', serif; /* O la fuente que elijas para los títulos */
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
+    line-height: 1.2;
+    color: #2a3d66;
+}
+
+.news-post-public-content h1 { font-size: 1.5em; } /* Ajustado para el tamaño de la tarjeta */
+.news-post-public-content h2 { font-size: 1.3em; }
+.news-post-public-content h3 { font-size: 1.1em; }
+
+.news-post-public-content p {
+    margin-bottom: 0.5em;
+}
+
+.news-post-public-content ul,
+.news-post-public-content ol {
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+}
+
+.news-post-public-content li {
+    margin-bottom: 0.2em;
+}
+
+.news-post-public-content strong {
+    font-weight: bold;
+}
+
+.news-post-public-content em {
+    font-style: italic;
+}
+
+.news-post-public-content u {
+    text-decoration: underline;
+}
+
+.news-post-content s {
+    text-decoration: line-through;
+}
+
+.news-post-public-content blockquote {
+    border-left: 4px solid #6366f1;
+    padding-left: 0.8em;
+    margin: 0.8em 0;
+    color: #4a5568;
+    font-style: italic;
+}
+
+.news-post-public-content a {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.news-post-public-content a:hover {
+    text-decoration: underline;
+}
+
+.news-post-public-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0.8em auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.read-more-button {
+    background-color: #4f46e5; /* Color índigo */
+    color: #fff;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-start; /* Alinea el botón a la izquierda dentro del flex column */
+    margin-top: 1rem; /* Espacio superior */
+}
+
+.read-more-button:hover {
+    background-color: #3730a3;
+    transform: translateY(-2px);
+}
+
+
+/* --- Estilos para la Vista de Noticia Individual (SingleNewsPage.jsx) --- */
+.single-news-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 6rem; /* Para no esconderse bajo la navbar */
+    background-color: #f0f4f8; /* Un fondo suave para la página de detalle */
+    box-sizing: border-box;
+}
+
+.single-news-container {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    max-width: 1000px; /* ANCHO AJUSTADO: Antes 800px, ahora 1000px */
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+    position: relative; /* Para el botón de volver */
+}
+
+.back-button {
+    background-color: #607d8b; /* Gris azulado */
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 1.5rem;
+    display: inline-flex; /* Para el icono de flecha */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.back-button:hover {
+    background-color: #455a64;
+    transform: translateY(-2px);
+}
+
+.bottom-button {
+    margin-top: 2rem; /* Margen superior para el botón de abajo */
+    width: auto; /* Ajustar ancho al contenido */
+}
+
+
+.single-news-title {
+    font-size: 2.8rem; /* Tamaño grande para el título principal */
+    font-weight: 800;
+    color: #2c3e50; /* Azul oscuro */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.single-news-meta {
+    font-size: 0.95rem;
+    color: #7f8c8d; /* Gris claro */
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid #ecf0f1;
+    padding-bottom: 1rem;
+}
+
+.single-news-author {
+    font-weight: 700;
+    color: #34495e; /* Gris más oscuro */
+}
+
+.single-news-date {
+    font-style: italic;
+}
+
+.single-news-image-wrapper {
+    width: 100%;
+    max-height: 450px; /* Altura máxima para la imagen principal */
+    overflow: hidden;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eef2f9; /* Fondo para imágenes transparentes */
+}
+
+.single-news-image {
+    width: 100%;
+    height: auto; /* Altura automática para mantener la proporción */
+    object-fit: contain; /* Ajustar la imagen dentro del contenedor */
+    display: block;
+}
+
+.single-news-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #34495e;
+    text-align: justify; /* Justificar el texto para una mejor lectura */
+}
+
+/* Estilos para el contenido HTML renderizado dentro de .single-news-content */
+.single-news-content h1,
+.single-news-content h2,
+.single-news-content h3,
+.single-news-content h4,
+.single-news-content h5,
+.single-news-content h6 {
+    font-family: 'Playfair Display', serif; /* O la fuente que elijas para los títulos */
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+    color: #2c3e50;
+}
+
+.single-news-content h1 { font-size: 2em; }
+.single-news-content h2 { font-size: 1.8em; }
+.single-news-content h3 { font-size: 1.6em; }
+.single-news-content h4 { font-size: 1.4em; }
+.single-news-content h5 { font-size: 1.2em; }
+.single-news-content h6 { font-size: 1em; }
+
+.single-news-content p {
+    margin-bottom: 1em;
+}
+
+.single-news-content ul,
+.single-news-content ol {
+    margin-left: 2em;
+    margin-bottom: 1em;
+}
+
+.single-news-content li {
+    margin-bottom: 0.5em;
+}
+
+.single-news-content strong {
+    font-weight: bold;
+}
+
+.single-news-content em {
+    font-style: italic;
+}
+
+.single-news-content u {
+    text-decoration: underline;
+}
+
+.single-news-content s {
+    text-decoration: line-through;
+}
+
+.single-news-content blockquote {
+    border-left: 5px solid #4f46e5;
+    padding-left: 1em;
+    margin: 1em 0;
+    color: #555;
+    font-style: italic;
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.single-news-content a {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+.single-news-content a:hover {
+    text-decoration: underline;
+}
+
+.single-news-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em auto; /* Centrar y dar espacio */
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: contain; /* Asegura que la imagen completa sea visible */
+    background-color: #eef2f9; /* Fondo para imágenes transparentes */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 767px) {
+    .single-news-title {
+        font-size: 2rem;
+    }
+    .single-news-container {
+        padding: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+    .back-button {
+        margin-bottom: 1rem;
+    }
+}
+
+/* --- NUEVOS ESTILOS PARA COMENTARIOS --- */
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e7ff; /* Separador */
+}
+
+.comments-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.comment-login-prompt {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.comment-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-textarea:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.submit-comment-button {
+    background-color: #4f46e5;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    align-self: flex-end; /* Alinea el botón a la derecha */
+}
+
+.submit-comment-button:hover {
+    background-color: #3730a3;
+    transform: translateY(-2px);
+}
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.comment-card {
+    background-color: #f8f8f8; /* Fondo más claro para los comentarios */
+    padding: 1.2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2f9; /* Borde sutil */
+    position: relative; /* Para el botón de eliminar */
+}
+
+.comment-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.comment-username {
+    font-weight: 700;
+    color: #34495e;
+}
+
+.comment-date {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.comment-content-text {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word; /* Asegura que las palabras largas se rompan */
+}
+
+.no-comments-message {
+    text-align: center;
+    color: #9ca3af;
+    font-style: italic;
+    padding: 1rem;
+}
+
+/* Estilos para el botón de eliminar comentario */
+.delete-comment-button {
+    background-color: #ef4444; /* Rojo */
+    color: #fff;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-left: 1rem; /* Espacio a la izquierda del botón de eliminar */
+}
+
+.delete-comment-button:hover {
+    background-color: #dc2626;
+}
+
+/* --- NUEVOS ESTILOS PARA RESPUESTAS --- */
+.comment-replies {
+    margin-top: 1rem;
+    padding-left: 1.5rem; /* Indentación para las respuestas */
+    border-left: 2px solid #e0e7ff; /* Línea de indentación */
+}
+
+.comment-replies .comment-card {
+    background-color: #ffffff; /* Fondo blanco para las respuestas */
+    box-shadow: none; /* Sin sombra para respuestas anidadas */
+    border: 1px solid #f0f4f8; /* Borde más sutil */
+}
+
+.reply-button {
+    background: none;
+    border: none;
+    color: #4f46e5; /* Color índigo */
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0; /* Eliminar padding por defecto del botón */
+    margin-right: 1rem; /* Espacio a la derecha del botón */
+}
+
+.reply-button:hover {
+    color: #3730a3;
+    text-decoration: underline;
+}
+
+.comment-actions-footer {
+    display: flex;
+    justify-content: flex-end; /* Alinea los botones a la derecha */
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.replying-to-text {
+    background-color: #eef2ff; /* Fondo claro para indicar a quién se responde */
+    color: #4f46e5;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.replying-to-username {
+    font-weight: 700;
+    margin-left: 0.3rem;
+}
+
+.cancel-reply-button {
+    background: none;
+    border: none;
+    color: #4f46e5;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.cancel-reply-button:hover {
+    color: #dc2626;
+}
+
+
+/* Media queries para responsividad de comentarios */
+@media (max-width: 600px) {
+    .comments-title {
+        font-size: 1.8rem;
+    }
+    .comment-card {
+        padding: 1rem;
+    }
+    .comment-author {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+    .comment-actions-footer {
+        flex-direction: column; /* Apilar botones en móviles */
+        align-items: flex-end;
+        gap: 0.5rem;
+    }
+    .reply-button, .delete-comment-button {
+        width: auto; /* Ajustar ancho */
+        margin: 0; /* Eliminar márgenes para apilamiento */
+    }
+    .delete-comment-button {
+        padding: 0.5rem 1rem; /* Aumentar tamaño del botón de eliminar en móvil */
+    }
+    .comment-replies {
+        padding-left: 1rem; /* Menor indentación en móviles */
+    }
+}
+
+/* --- NUEVOS ESTILOS PARA EL PANEL DE USUARIO NORMAL --- */
+.user-panel-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 6rem; /* Para no esconderse bajo la navbar */
+    background-color: #eef2f9; /* Fondo similar al de noticias */
+    box-sizing: border-box;
+}
+
+.user-panel-container {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.08);
+    max-width: 75rem; /* Mismo ancho que la página de noticias para consistencia */
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border: 1px solid #e0e7ff;
+}
+
+.user-panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a202c;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.user-panel-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e0e7ff; /* Línea de separación para las pestañas */
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6b7280; /* Gris por defecto */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent; /* Borde inferior para el indicador de pestaña */
+    margin: 0 0.5rem; /* Espacio entre botones */
+}
+
+.tab-button:hover {
+    color: #4f46e5; /* Color índigo al pasar el ratón */
+}
+
+.tab-button.active {
+    color: #4f46e5; /* Color índigo para la pestaña activa */
+    border-color: #4f46e5; /* Borde inferior activo */
+    font-weight: 700;
+}
+
+.user-panel-content {
+    padding-top: 1rem; /* Espacio entre las pestañas y el contenido */
+}
+
+.user-panel-subtitle {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2a3d66;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.placeholder-message {
+    text-align: center;
+    color: #6b7280;
+    font-style: italic;
+    padding: 2rem;
+    border: 1px dashed #d1d5db;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+
+/* Ajustes para las noticias dentro del panel de usuario */
+
+/* --- Estilos para el formulario de Quejas y Sugerencias (ComplaintSuggestionForm.jsx) --- */
+.complaint-suggestion-form-container {
+    padding: 1.5rem;
+    background-color: #f9fafb; /* Fondo ligeramente diferente para el formulario */
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eef2ff;
+}
+
+.form-description {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.complaint-form .form-group {
+    margin-bottom: 1.25rem; /* Espacio entre grupos de formulario */
+}
+
+/* Icono para tarjetas de quejas/sugerencias en el admin panel */
+.complaint-suggestion-card .message-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    opacity: 0.7;
+}
+
+/* Estilos para el estado de las quejas/sugerencias en el admin panel */
+.message-status {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    text-align: right;
+}
+
+.message-status .status-pendiente {
+    color: #f59e0b; /* Naranja */
+    font-weight: 600;
+}
+
+.message-status .status-revisado {
+    color: #2563eb; /* Azul */
+    font-weight: 600;
+}
+
+.message-status .status-resuelto {
+    color: #10b981; /* Verde */
+    font-weight: 600;
+}
+
+.message-subject {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.message-type {
+    font-weight: 700;
+    color: #4f46e5; /* Color para el tipo de mensaje */
+}
+
+/* Estilos para la sección de respuesta del admin */
+.admin-reply-section {
+    background-color: #eef2ff; /* Fondo claro para la respuesta */
+    border-left: 4px solid #4f46e5; /* Borde índigo */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.admin-reply-label {
+    font-weight: 600;
+    color: #3730a3;
+    margin-bottom: 0.5rem;
+}
+
+.admin-reply-content {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Para respetar saltos de línea */
+    word-wrap: break-word; /* Para que las palabras largas se rompan */
+}
+
+.admin-reply-date {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 0.5rem;
+    text-align: right;
+    font-style: italic;
+}
+
+.admin-actions-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.reply-form-container {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.reply-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+    resize: vertical;
+}
+
+.reply-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.reply-button {
+    background-color: #28a745; /* Verde para responder */
+    color: #fff;
+}
+
+.reply-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button {
+    background-color: #6c757d; /* Gris para cancelar */
+    color: #fff;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+/* Estilos para la sección de respuesta del usuario normal */
+.user-reply-section {
+    background-color: #f0f4f8; /* Fondo ligeramente diferente para la respuesta del admin en el panel del usuario */
+    border-left: 4px solid #6366f1;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.user-reply-label {
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.user-reply-content {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.user-reply-date {
+    font-size: 0.75rem;
+    color: #718096;
+    margin-top: 0.5rem;
+    text-align: right;
+    font-style: italic;
+}
